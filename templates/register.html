@@ -1,0 +1,39 @@
+{% extends "layout.html"%}
+
+{% block content %}
+<div class="login-page">
+    <div class="form">
+        <h2>稟議書 <span class="purn">システム</span></h2>
+        <form action="{{url_for('register_result')}}" method="get">
+
+
+            <label><input type="text" name="id" placeholder="社員ID:"></label>
+
+
+            <label><input type="text" name="pw" placeholder="パスワード:"></label>
+
+
+            <label><input type="text" name="mail" placeholder="Eメール:"></label>
+
+
+            <label><input type="text" name="name" placeholder="名前"><br></label>
+
+
+            <label><input type="text" name="department" placeholder="部署ID"><br></label>
+
+
+            <label><input type="text" name="jousi_id" placeholder="上司ID"><br></label>
+
+
+            <label><input type="text" name="jousi_name" placeholder="上司の名前"><br></label>
+
+
+            <div class="button">
+
+                <label><button type="submit">送信</button></label>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

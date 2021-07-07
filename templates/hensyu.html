@@ -1,0 +1,105 @@
+{% extends "layout.html"%}
+
+{% block content %}
+<div class="login-page">
+    <div class="form">
+        <h1>学生情報編集</h1>
+        <form action="{{url_for('hensyu_update')}}" method="get">
+            <input type="hidden" name="name" value="{{name}}">
+
+            <input type="text" name="new_name" value="{{hensyu[0]}}">
+
+
+            <input type="text" name="fname" value="{{hensyu[1]}}">
+
+
+            <input type="text" name="number" value="{{hensyu[3]}}">
+
+            <div class="cp_ipselect cp_sl04">
+                <select name="gender">
+                    <option value="{{hensyu[2]}}">{{hensyu[2]}}</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="その他">その他</option><br>
+                </select>
+            </div>
+
+
+            <div class="cp_ipselect cp_sl04">
+                <select name="Department">
+                    <option value="{{hensyu[4]}}">{{hensyu[4]}}</option>
+                    <option value="システム系学科">システム系学科</option>
+                    <option value="ビジネス系学科">ビジネス系学科</option>
+                    <option value="デザイン系学科">デザイン系学科</option><br>
+                </select>
+            </div>
+            <div class="cp_ipselect cp_sl04">
+                <select name="year">
+                    <option value="{{hensyu[6]}}">{{hensyu[6]}}年</option>
+                    <option value="1">1年</option>
+                    <option value="2">2年</option>
+                    <option value="3">3年</option>
+                    <option value="4">4年</option>
+
+                </select>
+            </div>
+
+
+
+
+
+            <input type="text" name="course" value="{{hensyu[5]}}"><br>
+
+
+
+
+
+            <input type="text" name="pcode1" value="{{hensyu[7]}}"><br>
+
+
+
+
+            <input type="text" name="address" value="{{hensyu[8]}}"><br>
+
+
+
+
+            <input type="text" name="pcode2" value="{{hensyu[9]}}"><br>
+
+
+
+
+            <input type="text" name="address2" value="{{hensyu[10]}}"><br>
+
+
+
+            <input type="text" name="tel" value="{{hensyu[11]}}"><br>
+
+
+
+
+
+            <input type="text" name="sfrom" value="{{hensyu[12]}}"><br>
+
+
+
+            <input type="text" name="Gname" value="{{hensyu[13]}}"><br>
+
+
+
+
+
+            <input type="text" name="remarks" value="{{hensyu[14]}}"><br>
+
+
+
+
+            <div class="button">
+
+                <button type="submit">編集</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

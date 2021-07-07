@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ac.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='favicon/favicon.ico')}}">
+    <title>Login Page</title>
+</head>
+<div class="login-page">
+    <div class="form">
+        <h2>稟議書 <span class="purn">システム</span></h2>
+        <h1>管理者ログイン</h1>
+      <form class="login-form" action="{{url_for('login_result')}}" method="post">
+        {% if error != None %}
+        <p style="color: brown;">{{error}}</p>
+        {% endif %}
+        <input type="text" placeholder="管理者ID:" name="mail">
+        <input type="password" placeholder="パスワード" name="pw"><br>
+        <button>ログイン</button>
+        <p class="message">または      <a href="{{url_for('Member_login')}}">利用者はこちら</a></p><br>
+      </form>
+    </div>
+  </div>
+</html>

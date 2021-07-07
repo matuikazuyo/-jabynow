@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='favicon/favicon.ico')}}">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <h2><span>学生一覧表示</span></h2>
+    <table border="1" bordercolor="white">
+        <tr class="co">
+            <th>氏名</th>
+            <th>ふりがな</th>
+            <th>性別</th>
+            <th>学籍番号</th>
+            <th>学科</th>
+            <th>コース</th>
+            <th>学年</th>
+            <th>郵便番号</th>
+            <th>現住所</th>
+            <th>実家の郵便番号</th>
+            <th>実家の住所</th>
+            <th>TEL</th>
+            <th>出身高校</th>
+            <th>保護者氏名</th>
+            <th>備考</th>
+        </tr>
+        {% for u in itiran %}
+        <tr  class="co2">
+            <td>{{u[0]}}</td>
+            <td>{{u[1]}}</td>
+            <td>{{u[2]}}</td>
+            <td>{{u[3]}}</td>
+            <td>{{u[4]}}</td>
+            <td>{{u[5]}}</td>
+            <td>{{u[6]}}</td>
+            <td>{{u[7]}}</td>
+            <td>{{u[8]}}</td>
+            <td>{{u[9]}}</td>
+            <td>{{u[10]}}</td>
+            <td>{{u[11]}}</td>
+            <td>{{u[12]}}</td>
+            <td>{{u[13]}}</td>
+            <td>{{u[14]}}</td>
+            <td>{{u[15]}}</td>
+        </tr>
+        {% endfor %}
+    </table></div>
+    <h2><a href="{{url_for('itiran')}}">戻る</a></h2>
+</body>
+</html>
