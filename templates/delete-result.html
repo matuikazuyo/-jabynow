@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="login-page">
+    <div class="form">
+<h1>下記の学生を削除しました<br></h1>
+<h1>名前: {{name}}<br>
+ふりがな: {{fname}}<br>
+学籍番号: {{number}}<br>
+学科: {{Department}}<br><br>
+<a href="{{url_for('delete')}}">他の学生を削除する</a></h1>
+</div>
+</div></h1>
+{% endblock %}

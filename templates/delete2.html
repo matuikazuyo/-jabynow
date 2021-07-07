@@ -1,0 +1,11 @@
+{% extends "honyaku.html"%}
+
+{% block content %}
+<div class="login-page">
+    <div class="form">
+    <h1>Delete function</h1>
+<form action="{{url_for('delete_result2')}}" method="get">
+    <input type="text" name="number" placeholder="number">
+    <button>Delete</button>
+    </form></div></div>
+{% endblock %}
