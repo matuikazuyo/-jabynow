@@ -16,10 +16,10 @@
         {% if error != None %}
         <p style="color: brown;">{{error}}</p>
         {% endif %}
-        <input type="text" placeholder="管理者ID:" name="mail">
+        <input type="text" placeholder="管理者ID:" name="id">
         <input type="password" placeholder="パスワード" name="pw"><br>
         <button>ログイン</button>
-        <p class="message">または      <a href="{{url_for('Member_login')}}">利用者はこちら</a></p><br>
+        
       </form>
     </div>
   </div>

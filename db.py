@@ -3,7 +3,7 @@ import hashlib
 import random as rd
 import string
 
-def insert(mail,pw,name,bir,depa,tclass):
+def insert(id,pw,mail,name,department,jyousi_id,jyousi_name,yakusyoku):
     salt = create_salt()
     b_pw = bytes(pw, "utf-8")
     b_salt = bytes(salt, "utf-8")
@@ -13,10 +13,10 @@ def insert(mail,pw,name,bir,depa,tclass):
     conn = get_connection()
     cur = conn.cursor()
 
-    insert_sql = "INSERT INTO account2 VALUES(%s,%s,%s,%s,%s,%s,%s)"
+    insert_sql = "INSERT INTO syain VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
     try:
-        cur.execute(insert_sql, (mail,hashed_pw,name,bir,depa,tclass,salt))
+        cur.execute(insert_sql, (id,hashed_pw,mail,name,department,jyousi_id,jyousi_name,yakusyoku,salt))
     except Exception as e:
         print("SQL実行に失敗：" , e)
     
@@ -32,10 +32,10 @@ def create_salt():
 
 
 def get_connection():
-    return MySQLdb.connect(user='root',passwd='gogototaiga1',host='localhost',db='gakusyuukanri',charset="utf8")
+    return MySQLdb.connect(user='root',passwd='gogototaiga1',host='localhost',db='ringisyosystem',charset="utf8")
 
 def login(id,pw):
-    salt = search_salt(pw)
+    salt = search_salt(id)
 
     if salt == None:
         return None 
@@ -49,14 +49,14 @@ def login(id,pw):
 
     return result
 
-def search_salt(pw):
+def search_salt(id):
     conn = get_connection()
     cur = conn.cursor()
 
-    sql = "SELECT salt FROM syain WHERE pw = %s"
+    sql = "SELECT salt FROM kanrisya WHERE id = %s"
 
     try:
-        cur.execute(sql, (pw,))
+        cur.execute(sql, (id,))
     except Exception as e:
         print("SQL実行に失敗：" , e)
 
@@ -73,20 +73,7 @@ def search_salt(pw):
 def search_account(id,pw):
     conn = get_connection()
     cur = conn.cursor()
-    sql = "SELECT id, name FROM syain_date WHERE id = %s AND pw = %s"
-    try:
-        cur.execute(sql, (id, pw))
-    except Exception as e:
-        print("SQL実行に失敗：" , e)
-    result = cur.fetchone()
-    cur.close()
-    conn.close()
-    return result
-
-def yakusyoku(id):
-    conn = get_connection()
-    cur = conn.cursor()
-    sql = "SELECT yakusyoku FROM syain WHERE id = %s"
+    sql = "SELECT pw id FROM kanrisya WHERE id = %s "
     try:
         cur.execute(sql, (id,))
     except Exception as e:
@@ -94,4 +81,17 @@ def yakusyoku(id):
     result = cur.fetchone()
     cur.close()
     conn.close()
-    return yakusyoku
+    return result
+
+# def yakusyoku(id):
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     sql = "SELECT yakusyoku FROM syain WHERE id = %s"
+#     try:
+#         cur.execute(sql, (id,))
+#     except Exception as e:
+#         print("SQL実行に失敗：" , e)
+#     result = cur.fetchone()
+#     cur.close()
+#     conn.close()
+#     return yakusyoku
